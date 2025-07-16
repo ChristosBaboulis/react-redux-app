@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-//import { createAction, createReducer } from '@reduxjs/toolkit';
+import { createSelector } from 'reselect';
+
 let lastId = 0;
 
 const bugSlice = createSlice({
@@ -27,6 +28,16 @@ const bugSlice = createSlice({
 
 export const {bugAdded, bugResolved, bugRemoved} = bugSlice.actions;
 export default bugSlice.reducer;
+
+// Memoization
+// get data from cache if available
+export const getUnresolvedBugs = createSelector(
+    state => state.entities.bugs,,
+    state => state.entities.projects,
+    (bugs, projects) => bugs.filter(bug => !bug.resolved)
+)
+
+//import { createAction, createReducer } from '@reduxjs/toolkit';
 
 // Action creators
 // export const bugAdded = createAction("bugAdded");

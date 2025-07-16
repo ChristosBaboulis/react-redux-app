@@ -1,4 +1,4 @@
-import configStore from './store/customStore';
+import configStore from './store/configureStore';
 import { bugAdded, bugRemoved, bugResolved } from './store/bugs';
 
 const store = configStore();

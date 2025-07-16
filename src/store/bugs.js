@@ -22,11 +22,18 @@ const bugSlice = createSlice({
         },
         bugRemoved: (state, action) => {
             return state.filter(bug => bug.id !== action.payload.id);
+        },
+        bugAssignedToUser: (state, action) => {
+            const { bugId, userId } = action.payload;
+            const index = state.findIndex(bug => bug.id === bugId);
+            if (index !== -1) {
+                state[index].userId = userId; // Assuming bugs have a userId field
+            }
         }
     }
 });
 
-export const {bugAdded, bugResolved, bugRemoved} = bugSlice.actions;
+export const { bugAdded, bugResolved, bugRemoved, bugAssignedToUser } = bugSlice.actions;
 export default bugSlice.reducer;
 
 // Memoization
@@ -36,6 +43,11 @@ export const getUnresolvedBugs = createSelector(
     state => state.entities.projects,
     (bugs, projects) => bugs.filter(bug => !bug.resolved)
 )
+
+export const getBugsByUser = userId => createSelector(
+    state => state.entities.bugs,
+    bugs => bugs.filter(bug => bug.userId === userId)
+);
 
 //import { createAction, createReducer } from '@reduxjs/toolkit';
 

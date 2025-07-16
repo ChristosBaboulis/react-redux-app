@@ -32,7 +32,7 @@ export default bugSlice.reducer;
 // Memoization
 // get data from cache if available
 export const getUnresolvedBugs = createSelector(
-    state => state.entities.bugs,,
+    state => state.entities.bugs,
     state => state.entities.projects,
     (bugs, projects) => bugs.filter(bug => !bug.resolved)
 )

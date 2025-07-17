@@ -1,16 +1,16 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    filename: "app.js",
-    path: path.resolve(__dirname, "dist")
+    filename: 'app.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, 'dist'),
     },
-    port: 9000
+    port: 9000,
   },
   module: {
     rules: [
@@ -18,10 +18,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
-      }
-    ]
+          loader: 'babel-loader',
+        },
+      },
+    ],
   },
-  mode: "development"
+  mode: 'development',
 };

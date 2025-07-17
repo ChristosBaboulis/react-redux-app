@@ -4,7 +4,7 @@ import projectsReducer from './projects';
 import usersReducer from './users';
 
 export default combineReducers({
-    bugs: bugsReducer,
-    projects: projectsReducer,
-    users: usersReducer
-})
+  bugs: bugsReducer,
+  projects: projectsReducer,
+  users: usersReducer,
+});

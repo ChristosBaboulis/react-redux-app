@@ -1,5 +1,12 @@
 import configStore from './store/configureStore';
-import {  getUnresolvedBugs, getBugsByUser, addBug, assignBugToUser, resolveBug, removeBug } from './store/bugs';
+import {
+  getUnresolvedBugs,
+  getBugsByUser,
+  addBug,
+  assignBugToUser,
+  resolveBug,
+  removeBug,
+} from './store/bugs';
 import { projectAdded } from './store/projects';
 import { userAdded } from './store/users';
 import { loadBugs } from './store/bugs';
@@ -13,19 +20,19 @@ const store = configStore();
 
 // -------------------------------- DISPATCH ACTIONS - API CALLOUTS --------------------------------
 // Add Projects
-store.dispatch(projectAdded({ name: "Project 1" }));
-store.dispatch(projectAdded({ name: "Project 2" }));
-store.dispatch(projectAdded({ name: "Project 3" }));
+store.dispatch(projectAdded({ name: 'Project 1' }));
+store.dispatch(projectAdded({ name: 'Project 2' }));
+store.dispatch(projectAdded({ name: 'Project 3' }));
 
 // Add Bugs
-store.dispatch(addBug("Bug 1"));
-store.dispatch(addBug("Bug 2"));
-store.dispatch(addBug("Bug 3"));
+store.dispatch(addBug('Bug 1'));
+store.dispatch(addBug('Bug 2'));
+store.dispatch(addBug('Bug 3'));
 
 // Add Users
-store.dispatch(userAdded({ name: "User 1" }));
-store.dispatch(userAdded({ name: "User 2" }));
-store.dispatch(userAdded({ name: "User 3" }));
+store.dispatch(userAdded({ name: 'User 1' }));
+store.dispatch(userAdded({ name: 'User 2' }));
+store.dispatch(userAdded({ name: 'User 3' }));
 
 // Assign Bug to User
 store.dispatch(assignBugToUser(1, 1));
@@ -59,14 +66,13 @@ console.log('x === y: ', x === y); // true, because of memoization
 // -------------------------------- TEST TOAST MIDDLEWARE --------------------------------
 // Dispatch an error action
 store.dispatch({
-    type: "error",
-    payload: { message: "An error occurred!" }
+  type: 'error',
+  payload: { message: 'An error occurred!' },
 });
 
-// -------------------------------- CUSTOM STORE -------------------------------- 
+// -------------------------------- CUSTOM STORE --------------------------------
 // import store from './customStore';
 // import * as actions from './actions';
-
 
 // store.subscribe(() => {
 //     console.log("store changed!", store.getState());

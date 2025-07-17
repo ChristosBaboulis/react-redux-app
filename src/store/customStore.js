@@ -1,30 +1,30 @@
-import reducer from "./reducer";
+import reducer from './reducer';
 
-function createStore(reducer){
-    let state;
-    let listeners = [];
-    
-    function getState(){
-        return state;
+function createStore(reducer) {
+  let state;
+  let listeners = [];
+
+  function getState() {
+    return state;
+  }
+
+  function dispatch(action) {
+    state = reducer(state, action);
+
+    for (let i = 0; i < listeners.length; i++) {
+      listeners[i]();
     }
+  }
 
-    function dispatch(action){
-        state = reducer(state, action);
+  function subscribe(listener) {
+    listeners.push(listener);
+  }
 
-        for(let i = 0; i < listeners.length; i++){
-            listeners[i]();
-        }
-    }
-
-    function subscribe(listener){
-        listeners.push(listener);
-    }
-
-    return {
-        subscribe,
-        dispatch,
-        getState
-    };
+  return {
+    subscribe,
+    dispatch,
+    getState,
+  };
 }
 
 export default createStore(reducer);

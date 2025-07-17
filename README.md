@@ -106,12 +106,13 @@ This project includes automated development tools and CI:
 
 ### Development Commands
 
-````bash
+```bash
 npm start     # Start the dev server
 npm run build # Build the project
 npm run lint  # Check for linting errors
 npm run format # Format code using Prettier
 npm test      # Run Jest tests
+```
 
 ## Running Tests
 
@@ -121,12 +122,18 @@ To run tests:
 
 ```bash
 npm test
-````
+```
 
 To watch tests in real-time:
 
 ```bash
 npm run test:watch
+```
+
+To see test coverage:
+
+```bash
+npx jest --coverage
 ```
 
 You can configure Babel + Jest using:

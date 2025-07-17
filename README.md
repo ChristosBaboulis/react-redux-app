@@ -55,7 +55,14 @@ npm start
 
 Runs on: `http://localhost:9001`
 
----
+### Development Commands
+
+```bash
+npm run start     # Start the dev server
+npm run build     # Build the project
+npm run lint      # Check for linting errors
+npm run format    # Format the code using Prettier
+```
 
 ## API Integration
 
@@ -66,8 +73,6 @@ The app uses **Axios** to perform API requests to the backend (`/bugs-backend`),
 - `PATCH /api/bugs/:id` → Update bug status or assignment
 
 These calls are typically dispatched via async action creators using Redux Thunk.
-
----
 
 ## Application Structure
 
@@ -80,23 +85,31 @@ These calls are typically dispatched via async action creators using Redux Thunk
 - `store/bugs.js`: Redux slice for bug management (actions, reducer, selectors)
 - `store/projects.js`: Redux slice for projects
 - `store/users.js`: Redux slice for users
+- `store/api.js`: Action creators (`apiCallBegan`, `apiCallSuccess`, `apiCallFailed`) for triggering API logic
 - `store/middleware/logger.js`: Logs Redux actions to a specified destination (e.g. console)
 - `store/middleware/toast.js`: Middleware that logs error-type actions
 - `store/middleware/func.js`: Handles function-style actions (similar to `redux-thunk`)
 - `store/middleware/api.js`: Custom middleware using Axios to handle API calls dispatched as `apiCallBegan`
 
+## Tooling & Automation
+
+This project includes automated development tools and CI:
+
+- **ESLint** for linting: Run `npm run lint`
+- **Prettier** for code formatting: Run `npm run format`
+- **GitHub Actions CI**: Automatically lints, builds, and checks formatting on push and pull requests.
+
 ## Credits
 
-This project is based on the **"Redux Starter Project"** by [Mosh Hamedani](https://codewithmosh.com/).  
+This project is based on the **"Redux Starter Project"** by [Mosh Hamedani](https://codewithmosh.com/).
 I followed his course and extended/customized the code for learning purposes.
 
 License: ISC (see `package.json`)
 
 ## My Contribution
 
-- Implemented `createSlice` logic for bugs and projects
-- Created selectors for unresolved bugs and bugs assigned to users
-- Configured Redux store using Redux Toolkit
-- Developed custom middleware (`logger`, `toast`, `func`) to extend Redux functionality
 - Refactored and documented the code
 - Added Babel and configured Webpack to support modern JavaScript (ES6+)
+- Integrated ESLint for consistent linting
+- Set up Prettier for automatic code formatting
+- Added GitHub Actions (CI) for lint and build validation on push

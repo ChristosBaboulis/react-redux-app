@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import { apiCallBegan } from './api';
 
+const url = '/bugs';
 let lastId = 0;
 
 const bugSlice = createSlice({
@@ -46,20 +47,18 @@ const bugSlice = createSlice({
     }
 });
 
-export const { 
-    bugAdded, 
-    bugResolved, 
-    bugRemoved, 
-    bugAssignedToUser, 
-    bugsReceived,
-    bugsRequested,
-    bugsRequestFailed
+const {
+  bugAdded,
+  bugResolved,
+  bugRemoved,
+  bugAssignedToUser,
+  bugsReceived,
+  bugsRequested,
+  bugsRequestFailed
 } = bugSlice.actions;
+
 export default bugSlice.reducer;
-
-// Action creators
-const url = '/bugs';
-
+//  -------------------------------- Action creators --------------------------------
 // command  - event
 // loadBugs - bugsReceived
 export const loadBugs = () => (dispatch, getState) => {
@@ -107,6 +106,16 @@ export const resolveBug = (bugId) => apiCallBegan({
     onError: bugsRequestFailed.type
 });
 
+// command      - event
+// removeBug    - bugRemoved
+export const removeBug = (bugId) => apiCallBegan({
+  url: url + '/' + bugId,
+  method: 'delete',
+  onSuccess: bugRemoved.type,
+  onError: bugsRequestFailed.type
+});
+
+// -------------------------------- SELECTORS --------------------------------
 // Memoization
 // get data from cache if available
 export const getUnresolvedBugs = createSelector(

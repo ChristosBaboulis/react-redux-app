@@ -49,6 +49,10 @@ const x = getUnresolvedBugs(store.getState());
 const y = getUnresolvedBugs(store.getState());
 console.log('x === y: ', x === y); // true, because of memoization
 
+store.dispatch((dispatch, getState) => {
+    dispatch({ type: 'bugsReceived', bugs: [4,5,6]})
+})
+
 // -------------------------------- CUSTOM STORE -------------------------------- 
 // import store from './customStore';
 // import * as actions from './actions';

@@ -17,6 +17,7 @@ This is a simple Redux-based bug tracking application built with **@reduxjs/tool
 - Reselect (memoized selectors)
 - Redux Thunk (included by default in Redux Toolkit middleware)
 - Custom Middleware (logger, toast, func)
+- Axios (for HTTP requests to the backend API)
 - Babel (for ES6+ syntax support)
 - Webpack Dev Server
 - Express (for optional backend)
@@ -56,6 +57,18 @@ Runs on: `http://localhost:9001`
 
 ---
 
+## API Integration
+
+The app uses **Axios** to perform API requests to the backend (`/bugs-backend`), such as:
+
+- `GET /api/bugs` → Fetch bugs into the Redux store
+- `POST /api/bugs` → Create a new bug
+- `PATCH /api/bugs/:id` → Update bug status or assignment
+
+These calls are typically dispatched via async action creators using Redux Thunk.
+
+---
+
 ## Application Structure
 
 - `index.js`: Entry point of the React application
@@ -70,6 +83,7 @@ Runs on: `http://localhost:9001`
 - `store/middleware/logger.js`: Logs Redux actions to a specified destination (e.g. console)
 - `store/middleware/toast.js`: Middleware that logs error-type actions
 - `store/middleware/func.js`: Handles function-style actions (similar to `redux-thunk`)
+- `store/middleware/api.js`: Custom middleware using Axios to handle API calls dispatched as `apiCallBegan`
 
 ## Credits
 

@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import { apiCallBegan } from './api';
-import api from './middleware/api';
 
 let lastId = 0;
 
@@ -65,13 +64,20 @@ export default bugSlice.reducer;
 // Action creators
 const url = '/bugs';
 
-export const loadBugs = () => apiCallBegan({
-    url,  
-    method: 'get',
-    onStart: bugsRequested.type,
-    onSuccess: bugsReceived.type,
-    onError: bugsRequestFailed.type
-});
+export const loadBugs = () => (dispatch, getState) => {
+    const { lastFetch } = getState().entities.bugs;
+    const diffInMinutes = (Date.now() - lastFetch) / (1000 * 60);
+
+    if (diffInMinutes < 10) return;
+
+    dispatch(apiCallBegan({
+        url,
+        method: 'get',
+        onStart: bugsRequested.type,
+        onSuccess: bugsReceived.type,
+        onError: bugsRequestFailed.type
+    }));
+}
 
 // Memoization
 // get data from cache if available

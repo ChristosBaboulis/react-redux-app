@@ -15,21 +15,61 @@ This is a simple Redux-based bug tracking application built with **@reduxjs/tool
 - React (base app)
 - Redux Toolkit (@reduxjs/toolkit)
 - Reselect (memoized selectors)
+- Redux Thunk (included by default in Redux Toolkit middleware)
+- Custom Middleware (logger, toast, func)
+- Babel (for ES6+ syntax support)
 - Webpack Dev Server
+- Express (for optional backend)
 
 ## Getting Started
 
-1. Install dependencies:
+### Frontend
 
 ```bash
 npm install
-```
-
-2. Start the development server:
-
-```bash
 npm start
 ```
+
+Runs on: `http://localhost:9000`
+
+---
+
+### Backend API (Optional)
+
+This project includes a simple Node.js/Express backend located in the `/bugs-backend` folder, used for local development and testing.
+
+#### Endpoints
+
+- `GET /api/bugs` → Fetch all bugs
+- `POST /api/bugs` → Add a new bug
+- `PATCH /api/bugs/:id` → Update bug (assign user or resolve)
+
+#### Run the backend
+
+```bash
+cd bugs-backend
+npm install
+npm start
+```
+
+Runs on: `http://localhost:9001`
+
+---
+
+## Application Structure
+
+- `index.js`: Entry point of the React application
+- `.babelrc`: Babel configuration for modern JavaScript support
+- `store/configureStore.js`: Redux store setup using Redux Toolkit and custom middleware
+- `store/customStore.js`: Manual Redux store (legacy / comparison with `configureStore`)
+- `store/reducer.js`: Root reducer that combines feature reducers into `entities`
+- `store/entities.js`: Combines `bugs`, `projects`, and `users` slices under `entities`
+- `store/bugs.js`: Redux slice for bug management (actions, reducer, selectors)
+- `store/projects.js`: Redux slice for projects
+- `store/users.js`: Redux slice for users
+- `store/middleware/logger.js`: Logs Redux actions to a specified destination (e.g. console)
+- `store/middleware/toast.js`: Middleware that logs error-type actions
+- `store/middleware/func.js`: Handles function-style actions (similar to `redux-thunk`)
 
 ## Credits
 
@@ -43,5 +83,6 @@ License: ISC (see `package.json`)
 - Implemented `createSlice` logic for bugs and projects
 - Created selectors for unresolved bugs and bugs assigned to users
 - Configured Redux store using Redux Toolkit
+- Developed custom middleware (`logger`, `toast`, `func`) to extend Redux functionality
 - Refactored and documented the code
 - Added Babel and configured Webpack to support modern JavaScript (ES6+)

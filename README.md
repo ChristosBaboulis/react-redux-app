@@ -44,3 +44,4 @@ License: ISC (see `package.json`)
 - Created selectors for unresolved bugs and bugs assigned to users
 - Configured Redux store using Redux Toolkit
 - Refactored and documented the code
+- Added Babel and configured Webpack to support modern JavaScript (ES6+)

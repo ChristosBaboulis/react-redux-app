@@ -49,6 +49,8 @@ export const getBugsByUser = userId => createSelector(
     bugs => bugs.filter(bug => bug.userId === userId)
 );
 
+
+// -------------------------------- Alternative implementation using createAction and createReducer -------------------------------- 
 //import { createAction, createReducer } from '@reduxjs/toolkit';
 
 // Action creators

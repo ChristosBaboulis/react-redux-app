@@ -39,7 +39,15 @@ const bugSlice = createSlice({
         bugsReceived: (state, action) => {
             state.list = action.payload;
             state.lastFetch = Date.now();
+            state.loading = false;
         },
+        bugsRequested: (state) => {
+            state.loading = true;
+        },
+        bugsRequestFailed: (state, action) => {
+            state.loading = false;
+            console.error("Failed to fetch bugs:", action.payload.message);
+        }
     }
 });
 
@@ -48,7 +56,9 @@ export const {
     bugResolved, 
     bugRemoved, 
     bugAssignedToUser, 
-    bugsReceived 
+    bugsReceived,
+    bugsRequested,
+    bugsRequestFailed
 } = bugSlice.actions;
 export default bugSlice.reducer;
 
@@ -58,7 +68,9 @@ const url = '/bugs';
 export const loadBugs = () => apiCallBegan({
     url,  
     method: 'get',
+    onStart: bugsRequested.type,
     onSuccess: bugsReceived.type,
+    onError: bugsRequestFailed.type
 });
 
 // Memoization

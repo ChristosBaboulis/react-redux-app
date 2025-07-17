@@ -1,5 +1,5 @@
 import configStore from './store/configureStore';
-import { bugAdded, bugRemoved, bugResolved, bugAssignedToUser, getUnresolvedBugs, getBugsByUser } from './store/bugs';
+import { bugAdded, bugRemoved, bugResolved, bugAssignedToUser, getUnresolvedBugs, getBugsByUser, addBug } from './store/bugs';
 import { projectAdded } from './store/projects';
 import { userAdded } from './store/users';
 import { loadBugs } from './store/bugs';
@@ -68,6 +68,9 @@ store.dispatch({
 
 // Dispatch GET request to fetch bugs
 store.dispatch(loadBugs());
+
+// Dispatch POST request to add a new bug
+store.dispatch(addBug({ description: "New Bug" }));
 
 // -------------------------------- CUSTOM STORE -------------------------------- 
 // import store from './customStore';

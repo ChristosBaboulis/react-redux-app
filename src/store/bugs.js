@@ -13,11 +13,7 @@ const bugSlice = createSlice({
     },
     reducers: {
         bugAdded: (state, action) => {
-            state.list.push({
-                id: ++lastId,
-                description: action.payload.description,
-                resolved: false
-            });
+            state.list.push(action.payload);
         },
         bugResolved: (state, action) => {
             const index = state.list.findIndex(bug => bug.id === action.payload.id);
@@ -78,6 +74,14 @@ export const loadBugs = () => (dispatch, getState) => {
         onError: bugsRequestFailed.type
     }));
 }
+
+export const addBug = (bug) => apiCallBegan({
+    url,
+    method: 'post',
+    data: bug,
+    onSuccess: bugAdded.type,
+    onError: bugsRequestFailed.type
+});
 
 // Memoization
 // get data from cache if available

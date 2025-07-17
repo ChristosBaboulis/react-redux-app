@@ -24,6 +24,7 @@ This is a simple Redux-based bug tracking application built with **@reduxjs/tool
 - ESLint (for linting and code quality)
 - Prettier (for consistent code formatting)
 - Jest (for unit testing and test runner)
+- Husky (for managing Git hooks like pre-commit formatting)
 
 ## Getting Started
 
@@ -101,6 +102,16 @@ This project includes automated development tools and CI:
 - **ESLint** for linting: Run `npm run lint`
 - **Prettier** for code formatting: Run `npm run format`
 - **GitHub Actions CI**: Automatically lints, builds, and checks formatting on push and pull requests.
+- **Husky**: Git hooks integration — currently configured with a `pre-commit` hook that automatically runs Prettier before each commit.
+
+### Development Commands
+
+````bash
+npm start     # Start the dev server
+npm run build # Build the project
+npm run lint  # Check for linting errors
+npm run format # Format code using Prettier
+npm test      # Run Jest tests
 
 ## Running Tests
 
@@ -110,7 +121,7 @@ To run tests:
 
 ```bash
 npm test
-```
+````
 
 To watch tests in real-time:
 
@@ -120,7 +131,7 @@ npm run test:watch
 
 You can configure Babel + Jest using:
 
-- `.babelrc`:
+- `.babel.config.json`:
 
 ```json
 {
@@ -151,3 +162,4 @@ License: ISC (see `package.json`)
 - Integrated ESLint for consistent linting
 - Set up Prettier for automatic code formatting
 - Added GitHub Actions (CI) for lint and build validation on push
+- Configured Husky to run Prettier on every commit (pre-commit hook)

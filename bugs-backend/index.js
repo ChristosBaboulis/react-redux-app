@@ -1,3 +1,4 @@
+// express web framework - similar to Spring MVC, APS.NET core, JAX-RS etc.
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");

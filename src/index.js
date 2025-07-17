@@ -65,6 +65,18 @@ store.dispatch({
     payload: { message: "An error occurred!" }
 });
 
+// Dispatch GET request to fetch bugs
+store.dispatch({
+    type: 'apiCallBegan',
+    payload: {
+        url: '/bugs',
+        method: 'get',
+        data: {},
+        onSuccess: 'bugsReceived',
+        onError: 'apiRequestFailed'
+    }
+});
+
 // -------------------------------- CUSTOM STORE -------------------------------- 
 // import store from './customStore';
 // import * as actions from './actions';

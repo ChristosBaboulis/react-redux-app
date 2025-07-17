@@ -2,7 +2,7 @@ import configStore from './store/configureStore';
 import { bugAdded, bugRemoved, bugResolved, bugAssignedToUser, getUnresolvedBugs, getBugsByUser } from './store/bugs';
 import { projectAdded } from './store/projects';
 import { userAdded } from './store/users';
-import * as actions from './store/api';
+import { loadBugs } from './store/bugs';
 
 const store = configStore();
 
@@ -57,9 +57,9 @@ const x = getUnresolvedBugs(store.getState());
 const y = getUnresolvedBugs(store.getState());
 console.log('x === y: ', x === y); // true, because of memoization
 
-store.dispatch((dispatch, getState) => {
-    dispatch({ type: 'bugsReceived', bugs: [4,5,6]})
-});
+// store.dispatch((dispatch, getState) => {
+//     dispatch({ type: 'bugsReceived', bugs: [4,5,6]})
+// });
 
 store.dispatch({
     type: "error",
@@ -67,11 +67,7 @@ store.dispatch({
 });
 
 // Dispatch GET request to fetch bugs
-store.dispatch(actions.apiCallBegan({
-    url: '/bugs',
-    method: 'get',
-    onSuccess: 'bugsReceived'
-}));
+store.dispatch(loadBugs());
 
 // -------------------------------- CUSTOM STORE -------------------------------- 
 // import store from './customStore';

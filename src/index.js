@@ -1,5 +1,5 @@
 import configStore from './store/configureStore';
-import { bugAdded, bugRemoved, bugResolved, bugAssignedToUser, getUnresolvedBugs, getBugsByUser, addBug } from './store/bugs';
+import { bugAdded, bugRemoved, bugResolved, bugAssignedToUser, getUnresolvedBugs, getBugsByUser, addBug, assignBugToUser, resolveBug } from './store/bugs';
 import { projectAdded } from './store/projects';
 import { userAdded } from './store/users';
 import { loadBugs } from './store/bugs';
@@ -30,10 +30,10 @@ store.dispatch(userAdded({ name: "User 3" }));
 console.log('1: ', store.getState());
 
 // Assign Bug to User
-store.dispatch(bugAssignedToUser({ bugId: 1, userId: 1 }));
+store.dispatch(assignBugToUser(1, 1));
 
 // Resolve a Bug
-store.dispatch(bugResolved({ id: 1 }));
+store.dispatch(resolveBug(1));
 
 // Log State
 console.log('2: ', store.getState());
@@ -57,10 +57,7 @@ const x = getUnresolvedBugs(store.getState());
 const y = getUnresolvedBugs(store.getState());
 console.log('x === y: ', x === y); // true, because of memoization
 
-// store.dispatch((dispatch, getState) => {
-//     dispatch({ type: 'bugsReceived', bugs: [4,5,6]})
-// });
-
+// Dispatch an error action
 store.dispatch({
     type: "error",
     payload: { message: "An error occurred!" }

@@ -2,6 +2,7 @@ import configStore from './store/configureStore';
 import { bugAdded, bugRemoved, bugResolved, bugAssignedToUser, getUnresolvedBugs, getBugsByUser } from './store/bugs';
 import { projectAdded } from './store/projects';
 import { userAdded } from './store/users';
+import * as actions from './store/api';
 
 const store = configStore();
 
@@ -66,16 +67,11 @@ store.dispatch({
 });
 
 // Dispatch GET request to fetch bugs
-store.dispatch({
-    type: 'apiCallBegan',
-    payload: {
-        url: '/bugs',
-        method: 'get',
-        data: {},
-        onSuccess: 'bugsReceived',
-        onError: 'apiRequestFailed'
-    }
-});
+store.dispatch(actions.apiCallBegan({
+    url: '/bugs',
+    method: 'get',
+    onSuccess: 'bugsReceived'
+}));
 
 // -------------------------------- CUSTOM STORE -------------------------------- 
 // import store from './customStore';

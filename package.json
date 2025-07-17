@@ -4,7 +4,10 @@
   "description": "Redux Starter Project",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js"
+    "start": "webpack-dev-server --config ./webpack.config.js",
+    "build": "webpack --mode production",
+    "lint": "eslint ./src --ext .js,.jsx",
+    "format": "prettier --write \"src/**/*.{js,jsx,json,css}\""
   },
   "keywords": [],
   "author": "Mosh Hamedani",
@@ -14,6 +17,10 @@
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
     "babel-loader": "^10.0.0",
+    "eslint": "^9.31.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
     "webpack": "^5.100.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"

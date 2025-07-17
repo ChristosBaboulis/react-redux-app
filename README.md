@@ -21,6 +21,9 @@ This is a simple Redux-based bug tracking application built with **@reduxjs/tool
 - Babel (for ES6+ syntax support)
 - Webpack Dev Server
 - Express (for optional backend)
+- ESLint (for linting and code quality)
+- Prettier (for consistent code formatting)
+- Jest (for unit testing and test runner)
 
 ## Getting Started
 
@@ -98,6 +101,41 @@ This project includes automated development tools and CI:
 - **ESLint** for linting: Run `npm run lint`
 - **Prettier** for code formatting: Run `npm run format`
 - **GitHub Actions CI**: Automatically lints, builds, and checks formatting on push and pull requests.
+
+## Running Tests
+
+This project uses [Jest](https://jestjs.io/) for unit testing.
+
+To run tests:
+
+```bash
+npm test
+```
+
+To watch tests in real-time:
+
+```bash
+npm run test:watch
+```
+
+You can configure Babel + Jest using:
+
+- `.babelrc`:
+
+```json
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
+- Add these to `package.json`:
+
+```json
+"scripts": {
+  "test": "jest",
+  "test:watch": "jest --watchAll"
+}
+```
 
 ## Credits
 

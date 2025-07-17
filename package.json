@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --config ./webpack.config.js",
     "build": "webpack --mode production",
     "lint": "eslint ./src --ext .js,.jsx",
-    "format": "prettier --write \"src/**/*.{js,jsx,json,css}\""
+    "format": "prettier --write \"src/**/*.{js,jsx,json,css}\"",
+    "test": "jest"
   },
   "keywords": [],
   "author": "Mosh Hamedani",
@@ -16,10 +17,13 @@
     "@babel/core": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
+    "@types/jest": "^30.0.0",
+    "babel-jest": "^30.0.4",
     "babel-loader": "^10.0.0",
     "eslint": "^9.31.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.3.0",
+    "jest": "^30.0.4",
     "prettier": "^3.6.2",
     "webpack": "^5.100.2",
     "webpack-cli": "^6.0.1",

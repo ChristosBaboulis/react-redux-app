@@ -60,6 +60,8 @@ export default bugSlice.reducer;
 // Action creators
 const url = '/bugs';
 
+// command  - event
+// loadBugs - bugsReceived
 export const loadBugs = () => (dispatch, getState) => {
     const { lastFetch } = getState().entities.bugs;
     const diffInMinutes = (Date.now() - lastFetch) / (1000 * 60);
@@ -75,6 +77,8 @@ export const loadBugs = () => (dispatch, getState) => {
     }));
 }
 
+// command - event
+// addBug  - bugAdded
 export const addBug = (bug) => apiCallBegan({
     url,
     method: 'post',
@@ -83,6 +87,8 @@ export const addBug = (bug) => apiCallBegan({
     onError: bugsRequestFailed.type
 });
 
+// command          - event
+// assignBugToUser  - bugAssignedToUser
 export const assignBugToUser = (bugId, userId) => apiCallBegan({
     url: url + '/' + bugId, 
     method: 'patch',
@@ -91,6 +97,8 @@ export const assignBugToUser = (bugId, userId) => apiCallBegan({
     onError: bugsRequestFailed.type
 });
 
+// command      - event
+// resolveBug   - bugResolved
 export const resolveBug = (bugId) => apiCallBegan({
     url: url + '/' + bugId,
     method: 'patch',

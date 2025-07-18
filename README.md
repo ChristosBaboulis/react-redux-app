@@ -170,3 +170,8 @@ License: ISC (see `package.json`)
 - Set up Prettier for automatic code formatting
 - Added GitHub Actions (CI) for lint and build validation on push
 - Configured Husky to run Prettier on every commit (pre-commit hook)
+
+## Certificate of Completion
+
+I completed the Ultimate Redux Course by Mosh Hamedani.  
+You can view the certificate [here](docs/certificate/certificate-of-completion-for-the-ultimate-redux-course.pdf).

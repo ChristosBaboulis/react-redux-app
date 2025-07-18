@@ -30,6 +30,8 @@ This is a simple Redux-based bug tracking application built with **@reduxjs/tool
 
 ### Frontend
 
+How to run: 
+
 ```bash
 npm install
 npm start
@@ -103,16 +105,6 @@ This project includes automated development tools and CI:
 - **Prettier** for code formatting: Run `npm run format`
 - **GitHub Actions CI**: Automatically lints, builds, and checks formatting on push and pull requests.
 - **Husky**: Git hooks integration — currently configured with a `pre-commit` hook that automatically runs Prettier before each commit.
-
-### Development Commands
-
-```bash
-npm start     # Start the dev server
-npm run build # Build the project
-npm run lint  # Check for linting errors
-npm run format # Format code using Prettier
-npm test      # Run Jest tests
-```
 
 ## Running Tests
 

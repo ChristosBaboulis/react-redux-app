@@ -2,7 +2,6 @@ import configureStore from '../configureStore';
 import { addBug, resolveBug, getUnresolvedBugs, loadBugs } from '../bugs';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
-import entities from '../entities';
 
 describe('bugslice', () => {
   let fakeAxios;

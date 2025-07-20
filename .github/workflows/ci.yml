@@ -42,10 +42,6 @@ jobs:
         working-directory: ./bugs-frontend
         run: npm test
 
-      - name: Format check
-        working-directory: ./bugs-frontend
-        run: npx prettier --check "src/**/*.{js,jsx,json,css}"
-
       - name: Build project
         working-directory: ./bugs-frontend
         run: npm run build

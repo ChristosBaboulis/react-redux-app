@@ -1,26 +1,17 @@
+// bugs-frontend/.eslintrc.js
 module.exports = {
   root: true,
   env: {
-    node: true,
     browser: true,
     es2021: true,
-    jest: true,
+    node: true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-  ],
+  extends: ['react-app', 'react-app/jest'],
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
-  // .eslintrc.js
   rules: {
-    'react/prop-types': 'off'
-  }
+    // custom rules here
+  },
 };

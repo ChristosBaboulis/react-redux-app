@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUnresolvedBugs, loadBugs } from '../store/bugs';
+import { getUnresolvedBugs, loadBugs, resolveBug } from '../store/bugs';
 import PropTypes from 'prop-types';
 
 class Bugs extends Component {

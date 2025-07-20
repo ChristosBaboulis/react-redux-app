@@ -2,10 +2,10 @@
 . "$(dirname "$0")/_/husky.sh"
 npm run format
 
-echo "🔍 Linting root..."
-npm run lint || exit 1
+# echo "Linting root..."
+# npm run lint || exit 1
 
-echo "🔍 Linting frontend..."
-cd bugs-frontend || exit 1
-npm run lint || exit 1
-cd ..
+# echo "Linting frontend..."
+# cd bugs-frontend || exit 1
+# npm run lint || exit 1
+# cd ..

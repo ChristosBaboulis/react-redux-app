@@ -1,6 +1,10 @@
 # Redux Bug Tracker
 
-This is a simple Redux-based bug tracking application built with **@reduxjs/toolkit**, **react-redux**, and **reselect**.
+This is a full-stack bug tracking application built with:
+
+- **React + Redux Toolkit** (frontend)
+- **Node.js + Express** (backend API)
+- **Custom middleware, memoized selectors, and scalable Redux architecture**
 
 ## Features
 
@@ -14,17 +18,20 @@ This is a simple Redux-based bug tracking application built with **@reduxjs/tool
 
 - React (base app)
 - Redux Toolkit (@reduxjs/toolkit)
+- React-Redux
+- Moment.js
 - Reselect (memoized selectors)
 - Redux Thunk (included by default in Redux Toolkit middleware)
 - Custom Middleware (logger, toast, func)
 - Axios (for HTTP requests to the backend API)
 - Babel (for ES6+ syntax support)
 - Webpack Dev Server
-- Express (for optional backend)
+- Express.js (for optional backend)
 - ESLint (for linting and code quality)
 - Prettier (for consistent code formatting)
 - Jest (for unit testing and test runner)
 - Husky (for managing Git hooks like pre-commit formatting)
+- GitHub Actions (CI)
 
 ## Getting Started
 
@@ -39,7 +46,26 @@ npm start
 
 Runs on: `http://localhost:9000`
 
----
+### Frontend (React + Redux)
+
+```bash
+cd bugs-frontend
+npm install
+npm start
+```
+
+Runs on: `http://localhost:3000`
+
+#### Installed Libraries:
+- `@reduxjs/toolkit`
+- `redux`
+- `react-redux`
+- `axios`
+- `reselect`
+- `moment`
+  
+
+> All Redux logic resides in `src/store/` and is fully modularized.
 
 ### Backend API (Optional)
 
@@ -61,15 +87,6 @@ npm start
 
 Runs on: `http://localhost:9001`
 
-### Development Commands
-
-```bash
-npm run start     # Start the dev server
-npm run build     # Build the project
-npm run lint      # Check for linting errors
-npm run format    # Format the code using Prettier
-```
-
 ## API Integration
 
 The app uses **Axios** to perform API requests to the backend (`/bugs-backend`), such as:
@@ -80,22 +97,27 @@ The app uses **Axios** to perform API requests to the backend (`/bugs-backend`),
 
 These calls are typically dispatched via async action creators using Redux Thunk.
 
-## Application Structure
+## Project Structure
 
-- `index.js`: Entry point of the React application
-- `.babelrc`: Babel configuration for modern JavaScript support
-- `store/configureStore.js`: Redux store setup using Redux Toolkit and custom middleware
-- `store/customStore.js`: Manual Redux store (legacy / comparison with `configureStore`)
-- `store/reducer.js`: Root reducer that combines feature reducers into `entities`
-- `store/entities.js`: Combines `bugs`, `projects`, and `users` slices under `entities`
-- `store/bugs.js`: Redux slice for bug management (actions, reducer, selectors)
-- `store/projects.js`: Redux slice for projects
-- `store/users.js`: Redux slice for users
-- `store/api.js`: Action creators (`apiCallBegan`, `apiCallSuccess`, `apiCallFailed`) for triggering API logic
-- `store/middleware/logger.js`: Logs Redux actions to a specified destination (e.g. console)
-- `store/middleware/toast.js`: Middleware that logs error-type actions
-- `store/middleware/func.js`: Handles function-style actions (similar to `redux-thunk`)
-- `store/middleware/api.js`: Custom middleware using Axios to handle API calls dispatched as `apiCallBegan`
+```
+redux-bug-tracker/
+│
+├── bugs-frontend/          # React frontend application
+│   ├── src/
+│   │   ├── components/     # React components (e.g. Bugs.jsx)
+│   │   └── store/          # Redux Toolkit store, slices, middleware
+│   ├── public/
+│   └── package.json
+│
+├── bugs-backend/           # Node.js + Express backend (optional)
+│   ├── index.js            # Entry point
+│   └── package.json
+│
+├── docs/                   # Documentation and certificates
+├── src/                    # Legacy demo Redux app (for reference)
+├── README.md
+└── ...
+```
 
 ## Tooling & Automation
 
@@ -162,6 +184,8 @@ License: ISC (see `package.json`)
 - Set up Prettier for automatic code formatting
 - Added GitHub Actions (CI) for lint and build validation on push
 - Configured Husky to run Prettier on every commit (pre-commit hook)
+- Installed and utilized `prop-types` in the frontend app for component type checking, maintaining code strictness in line with the course's best practices.
+
 
 ## Certificate of Completion
 

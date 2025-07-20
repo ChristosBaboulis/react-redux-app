@@ -19,7 +19,8 @@ module.exports = {
       version: 'detect',
     },
   },
+  // .eslintrc.js
   rules: {
-    'react/react-in-jsx-scope': 'off',
-  },
+    'react/prop-types': 'off'
+  }
 };

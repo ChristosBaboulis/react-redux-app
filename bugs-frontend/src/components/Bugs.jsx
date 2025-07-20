@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { loadBugs } from '../store/bugs'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loadBugs } from '../store/bugs';
 import PropTypes from 'prop-types';
 
 class Bugs extends Component {
@@ -11,8 +11,8 @@ class Bugs extends Component {
   render() {
     return (
       <ul>
-        {this.props.bugs.map(bug => (
-            <li key={bug.id}>{bug.description}</li>
+        {this.props.bugs.map((bug) => (
+          <li key={bug.id}>{bug.description}</li>
         ))}
       </ul>
     );
@@ -20,16 +20,16 @@ class Bugs extends Component {
 }
 
 const mapStateToProps = (state) => ({
-        bugs: state.entities.bugs.list
-    });
+  bugs: state.entities.bugs.list,
+});
 
-const mapDispatchToProps = dispatch => ({
-    loadBugs: () => dispatch(loadBugs())
+const mapDispatchToProps = (dispatch) => ({
+  loadBugs: () => dispatch(loadBugs()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bugs);
 
 Bugs.propTypes = {
   bugs: PropTypes.array.isRequired,
-  loadBugs: PropTypes.func.isRequired
+  loadBugs: PropTypes.func.isRequired,
 };

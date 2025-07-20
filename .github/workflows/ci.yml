@@ -23,9 +23,16 @@ jobs:
         working-directory: ./bugs-frontend
         run: echo "Switched to bugs-frontend"
 
-      - name: Install dependencies
+      - name: Delete existing npm cache
+        run: npm cache clean --force
+
+      - name: Clean install (no cache)
         working-directory: ./bugs-frontend
-        run: npm install
+        run: npm ci
+
+      - name: Debug Axios version
+        working-directory: ./bugs-frontend
+        run: npm ls axios
 
       - name: Lint code
         working-directory: ./bugs-frontend
